@@ -1,4 +1,4 @@
-# unsloth-persistent
+# unsloth-studio-wrapper
  
 A thin Docker wrapper around [`unsloth/unsloth`](https://github.com/unslothai/unsloth) that fixes data persistence for Unsloth Studio. Tested on Unraid 7.x.
  
@@ -35,16 +35,16 @@ Everything Studio and Jupyter write at runtime ends up under `/data`:
 ## Build
  
 ```bash
-git clone https://github.com/yourname/unsloth-persistent
-cd unsloth-persistent
-docker build -t unsloth-persistent .
+git clone https://github.com/Cyberschorsch/unsloth-studio-wrapper
+cd unsloth-studio-wrapper
+docker build -t unsloth-studio-wrapper .
 ```
  
 When Unsloth releases a new version, rebuild with `--no-cache` to pick up the latest base image:
  
 ```bash
 docker pull unsloth/unsloth:latest
-docker build --no-cache -t unsloth-persistent .
+docker build --no-cache -t unsloth-studio-wrapper .
 ```
  
 All data in `/data` survives the rebuild.
@@ -56,7 +56,7 @@ All data in `/data` survives the rebuild.
 ```yaml
 services:
   unsloth:
-    image: unsloth-persistent
+    image: unsloth-studio-wrapper
     build: .
     container_name: unsloth-studio
     restart: unless-stopped
@@ -86,7 +86,7 @@ docker run -d \
   -p 8888:8888 \
   -v $(pwd)/data:/data \
   --gpus all \
-  unsloth-persistent
+  unsloth-studio-wrapper
 ```
  
 ## Unraid setup
@@ -94,8 +94,8 @@ docker run -d \
 Build the image on your Unraid server via SSH:
  
 ```bash
-cd /mnt/cache/appdata/unsloth-persistent
-docker build -t unsloth-persistent .
+cd /mnt/cache/appdata/unsloth-studio-wrapper
+docker build -t unsloth-studio-wrapper .
 ```
  
 Then add the container via the Unraid Docker UI (Advanced View) with these path mappings:
