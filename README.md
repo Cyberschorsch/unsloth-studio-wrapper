@@ -33,6 +33,8 @@ Everything Studio and Jupyter write at runtime ends up under `/data`:
 ```
  
 ## Build
+
+You can use the prebuilt image: https://hub.docker.com/r/luciowassill/unsloth-studio-wrapper
  
 ```bash
 git clone https://github.com/Cyberschorsch/unsloth-studio-wrapper
